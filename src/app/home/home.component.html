@@ -2,22 +2,28 @@
   <div class="col-md-8 offset-2">
     <div class="card">
       <div class="card-body">
-        <form [formGroup]="userForm" (ngSubmit)="saveUser(userForm)">
+        <form [formGroup]="userForm" (ngSubmit)="saveUser()" novalidate>
           <formly-form
             [form]="userForm"
             [model]="userModel"
             [fields]="userFields"
             [options]="userOptions"
           >
+            <button class="btn btn-success" [disabled]="!userForm.valid">
+              Save User
+            </button>
           </formly-form>
-          <button class="btn btn-success" [disabled]="!userForm.valid">
-            Save User
-          </button>
         </form>
       </div>
       <div class="card-footer">
         <h6>User Info</h6>
         <p class="card-text">{{ userForm.value | json }}</p>
+        <hr class="my-4" />
+        <ul class="form-group" *ngIf="userValues">
+          <li class="list-group-item" *ngFor="let item of userValues">
+            {{ item }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>

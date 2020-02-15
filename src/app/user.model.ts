@@ -4,7 +4,8 @@ export class User {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
+  confirmEmail: string;
+  phone?: string;
   address: string;
   postalCode: number;
   city: string;
@@ -12,42 +13,66 @@ export class User {
   formFields() {
     return [
       {
-        key: "firstName",
-        type: "input",
-        templateOptions: {
-          type: "text",
-          placeholder: "First name",
-          label: "First Name",
-          required: true,
-          minLength: 3
-        }
-        // (alternative validation solution)
-        // ,
-        // validation: {
-        //   messages: { required: "First Name is required." }
-        // }
+        className: "row",
+        fieldGroup: [
+          {
+            className: "col-xs-4",
+            type: "input",
+            key: "firstName",
+            templateOptions: {
+              label: "First Name",
+              required: true,
+              minLength: 3
+            }
+            // (alternative validation solution)
+            // ,
+            // validation: {
+            //   messages: { minLength: "Requires a minimum of 3 characters." }
+            // }
+          },
+          {
+            className: "col-xs-12",
+            type: "input",
+            key: "lastName",
+            templateOptions: {
+              label: "Last Name",
+              required: true,
+              minLength: 3
+            },
+            expressionProperties: {
+              "templateOptions.disabled": "!model.firstName"
+            }
+          }
+        ]
       },
       {
-        key: "lastName",
-        type: "input",
-        templateOptions: {
-          type: "text",
-          placeholder: "Last name",
-          label: "Last Name",
-          required: true,
-          minLength: 3
-        }
-      },
-      {
-        key: "email",
-        type: "input",
-        templateOptions: {
-          type: "email",
-          placeholder: "Email",
-          label: "Email",
-          required: true,
-          email: true
-        }
+        className: "row",
+        fieldGroup: [
+          {
+            className: "col-md-6",
+            key: "email",
+            type: "input",
+            templateOptions: {
+              type: "email",
+              placeholder: "Email",
+              label: "Email",
+              required: true,
+              email: true
+            }
+          },
+          {
+            className: "col-md-6",
+            key: "confirmEmail",
+            type: "input",
+            templateOptions: {
+              type: "email",
+              placeholder: "Verify email",
+              label: "Confirm Email",
+              required: true,
+              email: true
+            }
+          }
+        ]
       },
       {
         key: "phone",
@@ -70,24 +95,29 @@ export class User {
         }
       },
       {
-        key: "postalCode",
-        type: "input",
-        templateOptions: {
-          type: "text",
-          placeholder: "Postal Code",
-          label: "Postal Code",
-          required: true
-        }
-      },
-      {
-        key: "city",
-        type: "input",
-        templateOptions: {
-          type: "text",
-          placeholder: "City",
-          label: "City",
-          required: true
-        }
+        className: "row",
+        fieldGroup: [
+          {
+            className: "col-md-6",
+            key: "postalCode",
+            type: "input",
+            templateOptions: {
+              type: "text",
+              label: "Postal Code",
+              required: true
+            }
+          },
+          {
+            key: "city",
+            type: "input",
+            templateOptions: {
+              type: "text",
+              placeholder: "City",
+              label: "City",
+              required: true
+            }
+          }
+        ]
       }
     ] as FormlyFieldConfig[];
   }

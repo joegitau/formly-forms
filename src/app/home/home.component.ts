@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   userModel: User;
   userOptions: FormlyFormOptions = {};
   userFields: FormlyFieldConfig[];
+  userValues: string[];
 
   constructor() {
     this.userForm = new FormGroup({});
@@ -21,8 +22,13 @@ export class HomeComponent implements OnInit {
     this.userFields = this.userModel.formFields();
   }
 
-  saveUser(user: User) {
-    return user;
+  saveUser() {
+    const vals = Object.entries(this.userForm.value).map(([key, value]) => {
+      return `${key}: ${value}`;
+    });
+    console.log(vals);
+    this.userValues = vals;
+    return vals;
   }
 
   ngOnInit() {}
