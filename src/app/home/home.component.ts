@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { FormlyFieldConfig } from "@ngx-formly/core";
+import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 
 import { User } from "../user.model";
 
@@ -12,6 +12,7 @@ import { User } from "../user.model";
 export class HomeComponent implements OnInit {
   userForm: FormGroup;
   userModel: User;
+  userOptions: FormlyFormOptions = {};
   userFields: FormlyFieldConfig[];
 
   constructor() {

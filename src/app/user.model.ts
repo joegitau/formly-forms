@@ -18,11 +18,14 @@ export class User {
           type: "text",
           placeholder: "First name",
           label: "First Name",
-          required: true
-        },
-        validation: {
-          messages: { required: "First Name is required." }
+          required: true,
+          minLength: 3
         }
+        // (alternative validation solution)
+        // ,
+        // validation: {
+        //   messages: { required: "First Name is required." }
+        // }
       },
       {
         key: "lastName",
@@ -31,10 +34,8 @@ export class User {
           type: "text",
           placeholder: "Last name",
           label: "Last Name",
-          required: true
-        },
-        validation: {
-          messages: { required: "Last name is required." }
+          required: true,
+          minLength: 3
         }
       },
       {
@@ -44,10 +45,8 @@ export class User {
           type: "email",
           placeholder: "Email",
           label: "Email",
-          required: true
-        },
-        validation: {
-          messages: { required: "Email is required." }
+          required: true,
+          email: true
         }
       },
       {
@@ -68,8 +67,7 @@ export class User {
           placeholder: "Address",
           label: "Address",
           required: true
-        },
-        validation: { messages: { required: "Address is required." } }
+        }
       },
       {
         key: "postalCode",
@@ -79,8 +77,7 @@ export class User {
           placeholder: "Postal Code",
           label: "Postal Code",
           required: true
-        },
-        validation: { messages: { required: "Address is required." } }
+        }
       },
       {
         key: "city",
@@ -90,8 +87,7 @@ export class User {
           placeholder: "City",
           label: "City",
           required: true
-        },
-        validation: { messages: { required: "City is required." } }
+        }
       }
     ] as FormlyFieldConfig[];
   }
