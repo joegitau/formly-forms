@@ -1,0 +1,23 @@
+<div class="row mt-5">
+  <div class="col-md-8 offset-2">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="userForm" (ngSubmit)="saveUser(userForm)">
+          <formly-form
+            [form]="userForm"
+            [model]="userModel"
+            [fields]="userFields"
+          >
+          </formly-form>
+          <button class="btn btn-success" [disabled]="!userForm.valid">
+            Save User
+          </button>
+        </form>
+      </div>
+      <div class="card-footer">
+        <h6>User Info</h6>
+        <p class="card-text">{{ userForm.value | json }}</p>
+      </div>
+    </div>
+  </div>
+</div>
