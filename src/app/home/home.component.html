@@ -17,7 +17,9 @@
       </div>
       <div class="card-footer">
         <h6>User Info</h6>
-        <p class="card-text">{{ userForm.value | json }}</p>
+        <pre>{{ userForm.value | json }}</pre>
+        <hr class="my-4" />
+        <pre>{{ userForm.model | json }}</pre>
         <hr class="my-4" />
         <ul class="form-group" *ngIf="userValues">
           <li class="list-group-item" *ngFor="let item of userValues">
